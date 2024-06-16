@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <p>{frontmatter.title}</p>
+  <p>{frontmatter.date.toString().slice(0,10)}</p>
+  <slot />
+</BaseLayout>
