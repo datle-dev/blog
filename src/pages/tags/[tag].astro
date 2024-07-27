@@ -4,11 +4,12 @@ import BlogPost from "@components/BlogPost.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-
   const allPosts = await getCollection("blog", ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true;
   });
-  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post) =>
