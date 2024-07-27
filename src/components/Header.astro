@@ -1,16 +1,18 @@
 ---
-import { SITE_TITLE } from "@consts";
 import ThemeToggleButton from "./ThemeToggleButton.astro";
 ---
 
-<header>
-  <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
-      <a href="/tags">Tags</a>
+<header class="flex">
+  <nav class="flex-1">
+    <div class="flex justify-between">
+      <div>
+        <a href="/">datle.dev</a>
+      </div>
+      <div>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/tags">Tags</a>
+      </div>
     </div>
   </nav>
   <ThemeToggleButton />

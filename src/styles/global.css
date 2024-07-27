@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .prose
+    :not(pre)
+    :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    @apply bg-gray-300 dark:bg-gray-700 p-1 rounded-sm;
+  }
+
+}
