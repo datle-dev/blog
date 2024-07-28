@@ -1,18 +1,28 @@
 ---
 import ThemeToggleButton from "./ThemeToggleButton.astro";
+const navLinks = ["blog", "about", "tags"];
 ---
 
-<header class="flex">
-  <nav class="flex-1">
-    <div class="flex justify-between">
-      <div>
-        <a href="/">datle.dev</a>
-      </div>
-      <div>
-        <a href="/blog">Blog</a>
-        <a href="/about">About</a>
-        <a href="/tags">Tags</a>
-      </div>
+<header class="flex gap-6 my-6">
+  <nav class="flex-1 flex justify-between items-center">
+    <div>
+      <a href="/" class="font-mono text-xl font-extrabold no-underline hover:underline"
+        >datle.dev</a
+      >
+    </div>
+    <div class="flex gap-6">
+      {
+        navLinks.map((link) => {
+          return (
+            <a
+              href={"/" + link}
+              class="group no-underline hover:underline"
+            >
+              {link}
+            </a>
+          );
+        })
+      }
     </div>
   </nav>
   <ThemeToggleButton />
