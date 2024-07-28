@@ -17,10 +17,13 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
+    "dayjs": "^1.11.12",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
+    "@iconify-json/ph": "^1.1.13",
+    "@iconify-json/ri": "^1.1.21",
     "@tailwindcss/typography": "^0.5.13"
   }
 }
