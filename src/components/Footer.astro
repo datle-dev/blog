@@ -1,9 +1,37 @@
 ---
-
+import { Icon } from "astro-icon/components";
+const navLinks = ["home", "blog", "about", "tags"];
 ---
 
-<footer>
-  <div>
-    <a href="https://github.com/withastro/astro" target="_blank">Github</a>
+<footer class="flex justify-between mb-6">
+  <div class="flex gap-2">
+    <a
+      href="https://github.com/datle-dev"
+      class="hover:text-pink-500"
+      target="_blank"
+    >
+      <Icon name="ri:github-fill" size={24}/>
+    </a>
+    <a
+      href="https://linkedin.com/in/dattle/"
+      class="hover:text-pink-500"
+      target="_blank"
+    >
+      <Icon name="ri:linkedin-box-fill" size={24}/>
+    </a>
+  </div>
+  <div class="flex gap-2 text-sm">
+    {
+      navLinks.map((link) => {
+        return (
+          <a
+            href={link === "home" ? "/" : "/" + link}
+            class="group no-underline hover:underline"
+          >
+            {link}
+          </a>
+        );
+      })
+    }
   </div>
 </footer>
