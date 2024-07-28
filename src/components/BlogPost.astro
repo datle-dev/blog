@@ -1,5 +1,16 @@
 ---
-const { title, url } = Astro.props;
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+import FormattedDate from '@components/FormattedDate.astro';
 ---
 
-<li><a href={url}>{title}</a></li>
+<li class="flex gap-2 text-nowrap">
+  <FormattedDate date={post.data.pubDate} />
+  <a href={"/blog/" + post.slug}>{post.data.title}</a>
+</li>

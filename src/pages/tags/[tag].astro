@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog", ({ data }) => {
@@ -27,12 +28,16 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
+  <p>#{tag}</p>
   <ul>
     {
       posts.map((post) => (
-        <BlogPost url={"/blog/" + post.slug} title={post.data.title} />
+        <BlogPost post={post} />
       ))
     }
   </ul>
+  <a href="/tags" class="flex items-center">
+    <Icon name="ri:arrow-left-s-line" />
+    Back to tags
+  </a>
 </BaseLayout>
