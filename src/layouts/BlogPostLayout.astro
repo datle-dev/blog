@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <article class="prose prose-gray dark:prose-invert">
+  <FormattedDate date={frontmatter.pubDate} />
+  <article class="prose prose-gray dark:prose-invert my-6">
     <slot />
   </article>
 </BaseLayout>
