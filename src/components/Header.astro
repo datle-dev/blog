@@ -1,29 +1,57 @@
 ---
+import { Icon } from "astro-icon/components";
 import ThemeToggleButton from "./ThemeToggleButton.astro";
-const navLinks = ["blog", "about", "tags"];
+const navLinks = ["home", "blog", "about", "tags"];
 ---
 
-<header class="flex gap-6 my-6">
-  <nav class="flex-1 flex justify-between items-center">
-    <div>
-      <a href="/" class="font-mono text-xl font-extrabold no-underline hover:underline"
-        >datle.dev</a
-      >
+<header id="header" class="group flex flex-col sm:flex-row justify-between items-center gap-6 my-6">
+  <div class="flex w-full justify-between items-center">
+    <a
+      href="/"
+      class="font-mono font-extrabold text-xl no-underline hover:underline"
+      >datle.dev</a
+    >
+    <div class="flex gap-6 sm:hidden">
+      <button id="burger-menu" class="hover:text-pink-500">
+        <span class="sr-only">Toggle menu</span>
+        <Icon name="ri:menu-fill" class="block group-[.menu-open]:hidden"/>
+        <Icon name="ri:close-fill" class="hidden group-[.menu-open]:block"/>
+      </button>
+      <ThemeToggleButton />
     </div>
-    <div class="flex gap-6">
-      {
-        navLinks.map((link) => {
-          return (
-            <a
-              href={"/" + link}
-              class="group no-underline hover:underline"
-            >
-              {link}
-            </a>
-          );
-        })
-      }
-    </div>
+  </div>
+  <nav
+    id="dropdown-menu"
+    class="flex-1 hidden group-[.menu-open]:flex flex-col sm:flex sm:flex-row gap-6 justify-end items-center"
+  >
+    {
+      navLinks.map((link) => {
+        return (
+          <a
+            href={link === "home" ? "/" : "/" + link}
+            class="no-underline hover:underline"
+          >
+            {link}
+          </a>
+        );
+      })
+    }
   </nav>
-  <ThemeToggleButton />
+  <div class="hidden sm:flex items-center">
+    <ThemeToggleButton />
+  </div>
 </header>
+
+<script>
+  document.querySelector("#burger-menu")?.addEventListener("click", () => {
+    document.querySelector("#header")?.classList.toggle("menu-open");
+  });
+
+  // Add back event listeners for hamburger menu if
+  // Astro view transition occurs
+  document.addEventListener("astro:after-swap", () => {
+    document.querySelector("#burger-menu")?.addEventListener("click", () => {
+      document.querySelector("#header")?.classList.toggle("menu-open");
+    });
+  });
+</script>
