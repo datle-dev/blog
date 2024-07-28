@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
 const pageTitle = "404: Not Found";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <a href="/">Go to home page</a>
+  <a href="/" class="flex items-center">
+    <Icon name="ri:arrow-left-s-line" />
+    Go to home page
+  </a>
 </BaseLayout>
