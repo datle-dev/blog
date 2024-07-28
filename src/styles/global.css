@@ -20,6 +20,10 @@
     @apply font-sans-headings text-gray-900 dark:text-white;
   }
 
+  a {
+    @apply font-normal underline hover:text-pink-500 hover:decoration-pink-500;
+  }
+
   .prose
     :not(pre)
     :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
