@@ -19,7 +19,7 @@ const { pageTitle } = Astro.props;
     <title>{SITE_TITLE} | {pageTitle}</title>
     <ViewTransitions />
   </head>
-  <body class="flex flex-col min-h-screen max-w-screen-md mx-auto px-4">
+  <body class="flex flex-col min-h-screen max-w-prose mx-auto px-4 transition-colors">
     <Header />
     <main class="flex-1" transition:animate="fade">
       <h1 class="text-3xl font-bold">{pageTitle}</h1>
